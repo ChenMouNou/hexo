@@ -195,3 +195,19 @@ html .sakana-box {
   }
 }
 /* 自定义底部  End */
+
+
+/* Twikoo 评论样式 */
+
+.tk-input .el-textarea__inner {
+  min-height: 120px !important;
+}
+
+#twikoo .OwO-body {
+  max-width: 100% !important;
+}
+
+#twikoo .OwO .OwO-body .OwO-items:nth-child(1),
+#twikoo .OwO .OwO-body .OwO-items:nth-child(4) {
+  max-height: 360px !important;
+}
