@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>win-MongoDB的安装（母胎版） | 陈某得博客</title><meta name="author" content="ChenMou"><meta name="copyright" content="ChenMou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="下载mongodb链接：https:&#x2F;&#x2F;www.mongodb.com&#x2F;try&#x2F;download&#x2F;community 往下划找到这个  然后点击第一个选择版本号，选择4.2.24版本（6.0.6和大多教程的不一样，容易迷糊） 第二个选择Windows（点击上面的这个网址，应该是直接帮你选好win的了） 然后Package选择zip，然后点击Download开始下载。 下载完成后直接解压就能用，然后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="win-MongoDB的安装（母胎版）">
+<meta property="og:url" content="http://example.com/2023/04/28/Mongodb/index.html">
+<meta property="og:site_name" content="陈某得博客">
+<meta property="og:description" content="下载mongodb链接：https:&#x2F;&#x2F;www.mongodb.com&#x2F;try&#x2F;download&#x2F;community 往下划找到这个  然后点击第一个选择版本号，选择4.2.24版本（6.0.6和大多教程的不一样，容易迷糊） 第二个选择Windows（点击上面的这个网址，应该是直接帮你选好win的了） 然后Package选择zip，然后点击Download开始下载。 下载完成后直接解压就能用，然后">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao7.jpg">
+<meta property="article:published_time" content="2023-04-28T13:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-12T08:40:27.220Z">
+<meta property="article:author" content="ChenMou">
+<meta property="article:tag" content="chenmouno">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao7.jpg"><link rel="shortcut icon" href="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/刻晴猫猫.png"><link rel="canonical" href="http://example.com/2023/04/28/Mongodb/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: ChenMou","link":"链接: ","source":"来源: 陈某得博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'win-MongoDB的安装（母胎版）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-12 16:40:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/刻晴猫猫.png" onerror="onerror=null;src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://music.chenmou.xyz/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao7.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="陈某得博客"><span class="site-name">陈某得博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://music.chenmou.xyz/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">win-MongoDB的安装（母胎版）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-28T13:00:00.000Z" title="发表于 2023-04-28 21:00:00">2023-04-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-12T08:40:27.220Z" title="更新于 2023-05-12 16:40:27">2023-05-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">964</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="win-MongoDB的安装（母胎版）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="下载mongodb"><a href="#下载mongodb" class="headerlink" title="下载mongodb"></a>下载mongodb</h3><p>链接：<a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community">https://www.mongodb.com/try/download/community</a></p>
+<p>往下划找到这个</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong1.png"></p>
+<p>然后点击第一个选择版本号，选择4.2.24版本（6.0.6和大多教程的不一样，容易迷糊）</p>
+<p>第二个选择Windows（点击上面的这个网址，应该是直接帮你选好win的了）</p>
+<p>然后Package选择zip，然后点击Download开始下载。</p>
+<p>下载完成后直接解压就能用，然后我们移动到想放的地方。</p>
+<p>这里我放在D盘下，所以我们需要配置环境变量</p>
+<p>环境变量路径为mongodb的bin目录:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\MongoDB\bin</span><br></pre></td></tr></table></figure>
+
+<p>这里推荐都给文件夹改个名</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>在D:\MongoDB\bin目录这里，路径这输入cmd打开命令窗口</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong2.png"></p>
+<p>打开后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;md &quot;../data/db&quot; &amp;&amp; &quot;md ../data/log&quot;</span><br><span class="line">db是初始化用的文件夹，log是存放日志的</span><br><span class="line">&gt;mongod --dbpath ../data/db</span><br><span class="line">创建初始化文件，失败可能是因为你不在bin目录下？</span><br></pre></td></tr></table></figure>
+
+<p>这样报就没事了</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong3.png"></p>
+<p>再运行下mongo.exe看看（如果你没有mongo.exe,或者显示找不到这个程序啥的，可能是你版本问题，也可能是你环境变量没有配好）</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong4.png"></p>
+<p>ok了</p>
+<p>打开文件夹D:&#x2F;MongoDB，在这下面新建一个目录conf进入这个目录下，新建一个cfg文件，叫什么无所谓,我这边叫mongod.cfg然后写入以下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemLog:</span><br><span class="line">    destination: file</span><br><span class="line">    path: D:\MongoDB\data\log\mongod.log</span><br><span class="line">storage:</span><br><span class="line">    dbPath: D:\MongoDB\data\db</span><br></pre></td></tr></table></figure>
+
+<p>这俩我一开始叫建了别说没有嗷</p>
+<h3 id="安装Mongo服务"><a href="#安装Mongo服务" class="headerlink" title="安装Mongo服务"></a>安装Mongo服务</h3><p>进入D:&#x2F;MongoDB&#x2F;bin这打开cmd和上面配置文件那里一样，输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod.exe --config &quot;D:\MongoDB\conf\mongod.cfg&quot; --install</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong5.png"></p>
+<p>啥都不报就是对，打开看看D:\MongoDB\data\log多了个mongod.log</p>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mongodb</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong6.png"></p>
+<p>关闭就是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop mongodb</span><br></pre></td></tr></table></figure>
+
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p>在启动服务时出现：</p>
+<p>服务没有响应控制功能。 请键入 NET HELPMSG 2186 以获得更多的帮助。</p>
+<p>出现这种问题，先别急，看看你的cmd是不是管理员模式，不是的话按win+Q打开搜索搜索cmd</p>
+<p>右击以管理员身份运行。</p>
+<p>如果已经是管理员了，嘶，那有没有可能就是你漏掉了什么？正常不会出现这个的试试下面的命令看看吧。。。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">先用管理员模式运行cmd，运行下面的命令</span><br><span class="line">sc delete MongoDB</span><br><span class="line">删除mongodb的服务</span><br><span class="line">再运行</span><br><span class="line">mongod --config &quot;D:\MongoDB\conf\mongod.cfg&quot; --install --serviceName &quot;MongoDB&quot;</span><br></pre></td></tr></table></figure>
+
+<p>不行的话哥们没法了，重装吧。。。</p>
+<h3 id="在win运行"><a href="#在win运行" class="headerlink" title="在win运行"></a>在win运行</h3><p>先启动mongo服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net start mongodb</span><br><span class="line">再</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong7.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;666+666</span><br><span class="line">1332</span><br></pre></td></tr></table></figure>
+
+<p>这样就OK了</p>
+<h3 id="增加密码登录"><a href="#增加密码登录" class="headerlink" title="增加密码登录"></a>增加密码登录</h3><p>先删除已有的服务，在D :&#x2F;MongoDB &#x2F;bin目录下打开cmd窗口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --remove --serviceName &quot;MongoDB&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong8.png"></p>
+<p>推荐你打开服务看看按win+R打开运行窗口输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">services.msc</span><br></pre></td></tr></table></figure>
+
+<p>看看你的mongo服务是不是叫这个名（MongoDB）</p>
+<p>然后我们运行删除，删完也可以在服务查看，右击刷新，看看mongo服务还在不</p>
+<p>删掉后运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config &quot;D:/MongoDB/conf/mongod.cfg&quot; --auth --install</span><br></pre></td></tr></table></figure>
+
+<p>和上面安装服务那里没有什么不同就是加了个参数而已</p>
+<p>打开服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mongodb</span><br></pre></td></tr></table></figure>
+
+<p>报错就重装！！！永远不要失去重头再来的勇气。这是我技术指导哥经常对别人说的</p>
+<p>再进入mongo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+
+<p>应该进去了吧？输入use admin，进入数据库admin</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; user admin</span><br><span class="line">switched to db admin</span><br></pre></td></tr></table></figure>
+
+<p>在输入db.createUser({user:’root（写什么都可以）’,pwd:’密码’,roles:[‘root’]})</p>
+<p>roles是指用户等级，root为最高。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.createUser(&#123;user:&#x27;root&#x27;,pwd:&#x27;123456&#x27;,roles:[&#x27;root&#x27;]&#125;)</span><br><span class="line">Successfully added user: &#123; &quot;user&quot; : &quot;root&quot;, &quot;roles&quot; : [ &quot;root&quot; ] &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/mongo/mong9.png"></p>
+<p>添加个root用户</p>
+<p>登录这个账户db.auth(‘root’,’密码’)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.auth(&#x27;root&#x27;,&#x27;123456&#x27;)</span><br><span class="line">1</span><br><span class="line">显示1就是进去了</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ChenMou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/04/28/Mongodb/">http://example.com/2023/04/28/Mongodb/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">陈某得博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/www.baidu.com" target="_blank"><img class="post-qr-code-img" src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao蓝.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/www.baidu.com" target="_blank"><img class="post-qr-code-img" src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao蓝.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/12/MySQL%E5%AE%89%E8%A3%85/" title="win-MySQL的安装"><img class="cover" src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao6.jpg" onerror="onerror=null;src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">win-MySQL的安装</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/06/%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB/" title="简单爬虫"><img class="cover" src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/小仓唯.jpg" onerror="onerror=null;src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">简单爬虫</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/刻晴猫猫.png" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChenMou</div><div class="author-info__description">交流吹水</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ChenMouNuo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ChenMouNou" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:chen27552854@outbook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站图片多在Pixivel下载<br/>评论区修好啦！！！（喜上眉梢）<br/></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDmongodb"><span class="toc-number">1.</span> <span class="toc-text">下载mongodb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Mongo%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.</span> <span class="toc-text">安装Mongo服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99"><span class="toc-number">5.</span> <span class="toc-text">报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8win%E8%BF%90%E8%A1%8C"><span class="toc-number">6.</span> <span class="toc-text">在win运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">增加密码登录</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/05/12/MySQL%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88%E5%B1%95%E7%A4%BA/" title="MySQL简单命令集合展示"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao4.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="MySQL简单命令集合展示"/></a><div class="content"><a class="title" href="/2023/05/12/MySQL%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88%E5%B1%95%E7%A4%BA/" title="MySQL简单命令集合展示">MySQL简单命令集合展示</a><time datetime="2023-05-12T15:58:00.000Z" title="发表于 2023-05-12 23:58:00">2023-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/12/MySQL%E5%AE%89%E8%A3%85/" title="win-MySQL的安装"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao6.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="win-MySQL的安装"/></a><div class="content"><a class="title" href="/2023/05/12/MySQL%E5%AE%89%E8%A3%85/" title="win-MySQL的安装">win-MySQL的安装</a><time datetime="2023-05-12T13:00:00.000Z" title="发表于 2023-05-12 21:00:00">2023-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/28/Mongodb/" title="win-MongoDB的安装（母胎版）"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao7.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="win-MongoDB的安装（母胎版）"/></a><div class="content"><a class="title" href="/2023/04/28/Mongodb/" title="win-MongoDB的安装（母胎版）">win-MongoDB的安装（母胎版）</a><time datetime="2023-04-28T13:00:00.000Z" title="发表于 2023-04-28 21:00:00">2023-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/06/%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB/" title="简单爬虫"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/小仓唯.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="简单爬虫"/></a><div class="content"><a class="title" href="/2023/03/06/%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB/" title="简单爬虫">简单爬虫</a><time datetime="2023-03-06T06:30:00.000Z" title="发表于 2023-03-06 14:30:00">2023-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/27/%E5%85%AC%E5%85%B1%E6%97%A5%E5%BF%97/" title="公共日志"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/ye.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="公共日志"/></a><div class="content"><a class="title" href="/2023/02/27/%E5%85%AC%E5%85%B1%E6%97%A5%E5%BF%97/" title="公共日志">公共日志</a><time datetime="2023-02-27T11:24:00.000Z" title="发表于 2023-02-27 19:24:00">2023-02-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By ChenMou</div><div class="footer_custom_text">People talking without speaking.<br/><a href="#">生活链接</a><a href="https://icp.gov.moe/?keyword=20232854" target="_blank"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/萌ICP备 20232854.svg"></a><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/chen-摸鱼中-00d7f4.svg"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://hexo.twikoo.chenmou.xyz/',
+      region: 'ap-qingyuan',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://hexo.twikoo.chenmou.xyz/',
+      region: 'ap-qingyuan',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="1853327770" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-lrctype="1" data-preload="none" data-autoplay="true" muted></div><script id="canvas_nest" defer="defer" color="34,184,240" opacity="1.7" zIndex="-1" count="169" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="真,好,玩,真,好,玩,真,的,真,の,很好,玩" data-fontsize="18px" data-random="false" async="async"></script><script>window.$crisp = [];
+window.CRISP_WEBSITE_ID = "ec748dec-df83-439c-877b-74c35d80db9d";
+(function () {
+  d = document;
+  s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = 1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+$crisp.push(["safe", true])
+
+if (true) {
+  $crisp.push(["do", "chat:hide"])
+  $crisp.push(["on", "chat:closed", function() {
+    $crisp.push(["do", "chat:hide"])
+  }])
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      $crisp.push(["do", "chat:hide"])
+    }
+    function chatBtnShow () {
+      $crisp.push(["do", "chat:show"])
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/link/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
