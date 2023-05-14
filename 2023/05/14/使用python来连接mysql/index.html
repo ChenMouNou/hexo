@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>使用python连接mysql | 陈某得博客</title><meta name="author" content="ChenMou"><meta name="copyright" content="ChenMou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="开篇python连接mysql的教程及一些些简单命令的使用 下载模块pyCham在pycham内点击下面的终端按钮就是那个’’&gt;_”这样符号的在左下方那一排，输入这俩 123pip install pymysqlpip install mysqlclient  复制啊，这最近python不知道发什么电，手动打的老报错。。。 https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;mysqlclie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用python连接mysql">
+<meta property="og:url" content="http://example.com/2023/05/14/%E4%BD%BF%E7%94%A8python%E6%9D%A5%E8%BF%9E%E6%8E%A5mysql/index.html">
+<meta property="og:site_name" content="陈某得博客">
+<meta property="og:description" content="开篇python连接mysql的教程及一些些简单命令的使用 下载模块pyCham在pycham内点击下面的终端按钮就是那个’’&gt;_”这样符号的在左下方那一排，输入这俩 123pip install pymysqlpip install mysqlclient  复制啊，这最近python不知道发什么电，手动打的老报错。。。 https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;mysqlclie">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/xuejian.jpg">
+<meta property="article:published_time" content="2023-05-14T12:30:00.000Z">
+<meta property="article:modified_time" content="2023-05-14T11:57:57.421Z">
+<meta property="article:author" content="ChenMou">
+<meta property="article:tag" content="chenmouno">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/xuejian.jpg"><link rel="shortcut icon" href="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/刻晴猫猫.png"><link rel="canonical" href="http://example.com/2023/05/14/%E4%BD%BF%E7%94%A8python%E6%9D%A5%E8%BF%9E%E6%8E%A5mysql/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: ChenMou","link":"链接: ","source":"来源: 陈某得博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用python连接mysql',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-14 19:57:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/刻晴猫猫.png" onerror="onerror=null;src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://music.chenmou.xyz/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/xuejian.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="陈某得博客"><span class="site-name">陈某得博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://music.chenmou.xyz/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">使用python连接mysql</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-14T12:30:00.000Z" title="发表于 2023-05-14 20:30:00">2023-05-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-14T11:57:57.421Z" title="更新于 2023-05-14 19:57:57">2023-05-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/python/">python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用python连接mysql"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>开篇python连接mysql的教程及一些些简单命令的使用</p>
+<h2 id="下载模块"><a href="#下载模块" class="headerlink" title="下载模块"></a>下载模块</h2><h3 id="pyCham"><a href="#pyCham" class="headerlink" title="pyCham"></a>pyCham</h3><p>在pycham内点击下面的终端按钮就是那个’’&gt;_”这样符号的在左下方那一排，输入这俩</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install pymysql</span><br><span class="line"></span><br><span class="line">pip install mysqlclient</span><br></pre></td></tr></table></figure>
+
+<p>复制啊，这最近python不知道发什么电，手动打的老报错。。。</p>
+<p><a target="_blank" rel="noopener" href="https://pypi.org/project/mysqlclient/#description">https://pypi.org/project/mysqlclient/#description</a></p>
+<p>这是mysqlclient的模块官网，可能会很卡等等吧，这串东西用不了的话去官网复制。。。</p>
+<p>我使用的是pycham这个软件，但是为了帮人帮到底，哥们决定学下vs怎么用</p>
+<h3 id="VS-code"><a href="#VS-code" class="headerlink" title="VS code"></a>VS code</h3><p>学完了，6不6？</p>
+<p>在vs code中按下ctrl+shift+x打开扩展下载，搜索python</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/python/vs-python.png"></p>
+<p>这个就是了，下载。按一下alt按键在按R上面就有东西弹出来了按运行，这时你没有装这上面俩包就会报错，然后再点下下面的终端</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;pip install pymysql</span><br><span class="line">&gt;&gt;pip install mysqlclient</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>运行这俩条就可了，手打可能会报错</p>
+<h2 id="学习文件格式"><a href="#学习文件格式" class="headerlink" title="学习文件格式"></a>学习文件格式</h2><h3 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br></pre></td></tr></table></figure>
+
+<h3 id="打开mysql服务"><a href="#打开mysql服务" class="headerlink" title="打开mysql服务"></a>打开mysql服务</h3><p>打开你的任务管理器看看最后一个服务找到MySQL的看看后面数字没数字直接打（或者你直接在这启动也行。。。但我们走糕端路线的，，，还是用代码帅一点！！）</p>
+<p>要管理员嗷win+Q搜索cmd右键以管理员运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql80</span><br></pre></td></tr></table></figure>
+
+<p>没装？</p>
+<p><a target="_blank" rel="noopener" href="https://www.chenmou.xyz/2023/05/12/MySQL%E5%AE%89%E8%A3%85/">win-MySQL的安装 | 陈某得博客 (chenmou.xyz)</a></p>
+<p>不会用？</p>
+<p><a target="_blank" rel="noopener" href="https://www.chenmou.xyz/2023/05/12/MySQL%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88%E5%B1%95%E7%A4%BA/">MySQL简单命令集合展示 | 陈某得博客 (chenmou.xyz)</a></p>
+<p>嘿嘿</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用MySQLdb模块生成数据库对象ServerName（服务器名），User（用户名），PWD（密码），DBName（库名），CharsetName（字符集）</span></span><br><span class="line">db = MySQLdb.connect(<span class="string">&#x27;ServerName&#x27;</span>, <span class="string">&#x27;User&#x27;</span>, <span class="string">&#x27;PWD&#x27;</span>, <span class="string">&#x27;DBName&#x27;</span>, charset=<span class="string">&#x27;CharsetName&#x27;</span>)</span><br><span class="line">cur = db.cursor()    <span class="comment">#这个cursor()是生成游标对象的</span></span><br><span class="line"><span class="built_in">print</span>(cur)           <span class="comment">#输出看看？</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;输出：&lt;MySQLdb.cursors.Cursor object at 0x0000018561CFC070&gt;像这样的就没啥事了，应该吧，反正连上了&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db = MySQLdb.connect(<span class="string">&#x27;localhost&#x27;</span>, <span class="string">&#x27;root&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;db&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>把db那段改成这样密码123456如果你的不一样就改，db是数据库也改，改成你自己的。</p>
+<p>运行一遍看看，没爆红的就OK了</p>
+<h3 id="简单格式进阶"><a href="#简单格式进阶" class="headerlink" title="简单格式进阶"></a>简单格式进阶</h3><p>先看看我的表格式</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/pyton/dbs.png"></p>
+<p>建表命令在<a target="_blank" rel="noopener" href="https://www.chenmou.xyz/2023/05/12/MySQL%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88%E5%B1%95%E7%A4%BA/">MySQL简单命令集合展示 | 陈某得博客 (chenmou.xyz)</a>这里的目录3</p>
+<h4 id="第一部分MySQLdb"><a href="#第一部分MySQLdb" class="headerlink" title="第一部分MySQLdb"></a>第一部分MySQLdb</h4><p>和玩游戏一样人都是需要激励的我会分成几个部分，并且打上注释，不懂就bing.com查下好吧</p>
+<p>还报错的话就在下面评论区留言，我如果又看到会回的。</p>
+<p>新建一个.py文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MySQLdb_APP</span>():     <span class="comment">#创建一个函数哇</span></span><br><span class="line">    db = MySQLdb.connect(<span class="string">&#x27;localhost&#x27;</span>, <span class="string">&#x27;root&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;db&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    cur = db.cursor()    <span class="comment">#为’db‘生成’游标子对象‘（自己去查,字好多）命名为cur，</span></span><br><span class="line">                         <span class="comment"># cur为数据库对象db生成的游标子对象。</span></span><br><span class="line">                         <span class="comment"># 游标子对象包括打开open()、关闭 close()、执行execute()、</span></span><br><span class="line">                         <span class="comment"># 获取单条记录fetchone()、获取多条记录fetchmany()、</span></span><br><span class="line">                         <span class="comment"># 获取所有记录 fetchall()等基本方法</span></span><br><span class="line">    sql = <span class="string">&quot;SELECT VERSION()&quot;</span>  <span class="comment">#查询MySQL版本</span></span><br><span class="line"></span><br><span class="line">    sql = <span class="string">&quot;insert into no1(uName,USex)\</span></span><br><span class="line"><span class="string">          values(&#x27;张天力&#x27;，&#x27;男&#x27;)&quot;</span>    <span class="comment">#在lun库中no1表内增加’张天力‘，’男‘这条信息。</span></span><br><span class="line">    sql = <span class="string">&quot;insert into no1(uName,USex)\</span></span><br><span class="line"><span class="string">          values(&#x27;张给力&#x27;，&#x27;男&#x27;)&quot;</span>    <span class="comment">#在lun库中no1表内增加’张给力‘，’男‘这条信息。</span></span><br><span class="line"></span><br><span class="line">    sql = <span class="string">&quot;delete from no1 where uName &#x27;%张天力%&#x27;&quot;</span>   <span class="comment">#删除no1表中张天力信息</span></span><br><span class="line"></span><br><span class="line">    sql = <span class="string">&quot;update no1 set uName=&#x27;张美丽&#x27;,USex=&#x27;女&#x27;,where uName=&#x27;张给力&#x27;&quot;</span></span><br><span class="line">    <span class="comment">#将no1表中uName为张给力的修改为张美丽，USex为女。</span></span><br><span class="line"></span><br><span class="line">    sql = <span class="string">&quot;select uID,uName,USex from no1&quot;</span></span><br><span class="line">    <span class="comment">#查询数据，no1表中uID,uName,USex的数据</span></span><br><span class="line">    <span class="comment">#以上都是预设置的命令，暂时没法用（因为只是字符串）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#下面开始使用</span></span><br><span class="line">    res = cur.execute(sql)  <span class="comment">#执行</span></span><br><span class="line">    db.commit()   <span class="comment">#t提交数据库运行</span></span><br><span class="line">    data = cur.fetchall()     <span class="comment">#不看上面的话，你能记得这句干什么来的嘛？</span></span><br><span class="line">    <span class="comment"># 它后面带个all我们就猜是不是全部的意思，这里查询的都是fetch（翻译为’取得‘）开头，</span></span><br><span class="line">    <span class="comment">#一条就是one，多条就是many（发音为’枚拟‘意思是‘许多’）</span></span><br><span class="line">    <span class="comment"># print(str(res))  #输出res看看</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(data) <span class="comment">#输出看看你的表</span></span><br><span class="line">    <span class="comment">#啊？不好看？淦</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(data))    <span class="comment">#那就看看它这个表是什么类型吧。。</span></span><br><span class="line">    <span class="comment">#这两条看一遍了解下，就可以注释掉了（可以注释，但是最少咱们过一遍了解下好吧）</span></span><br><span class="line"></span><br><span class="line">    cur.close()  <span class="comment">#关掉cur，不了解的上bing.com查查.close看作用好吧，最少咱们要知道。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">        <span class="built_in">print</span>(item[<span class="number">0</span>], item[<span class="number">1</span>], item[<span class="number">2</span>])  <span class="comment">#heihei，这下好看了吧awa</span></span><br><span class="line">    <span class="comment">#python真是太好玩了！来跟我说一遍：太好玩了！</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:  <span class="comment">#上面这里空两行，保证运行规范</span></span><br><span class="line">    MySQL_APPdb()      </span><br></pre></td></tr></table></figure>
+
+<p>上面pymysql和大多sql的还用不到先熟悉下，以后会用到的，上面主要是文件格式，简单代码，先初步了解下（反正我也写了注释的，我都会运行一遍，保真）。</p>
+<h4 id="第二部分pymysql"><a href="#第二部分pymysql" class="headerlink" title="第二部分pymysql"></a>第二部分pymysql</h4><p>在这上面输入，输入完了也要记得空两行啊</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    MySQL_APPdb()      <span class="comment">#上面这里空两行，保证运行规范</span></span><br></pre></td></tr></table></figure>
+
+<p>输入一下这些，然后运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    pymysql_APP()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#函数要空两行</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pymysql_APP</span>():</span><br><span class="line">    Db = pymysql.connect(host=<span class="string">&#x27;localhost&#x27;</span>, user=<span class="string">&#x27;root&#x27;</span>, password=<span class="string">&#x27;123456&#x27;</span>, db=<span class="string">&#x27;db&#x27;</span>, charset=<span class="string">&#x27;utf8&#x27;</span>, cursorclass=pymysql.cursors.DictCursor)</span><br><span class="line">    <span class="comment">#这段代码用于指定游标类型为字典格式返回数据</span></span><br><span class="line"></span><br><span class="line">    sql = <span class="string">&quot;SELECT VERSION()&quot;</span></span><br><span class="line">    <span class="comment">#跟上面的一样</span></span><br><span class="line"></span><br><span class="line">    cur = Db.cursor()    <span class="comment">#和上面第一部分一样的意思</span></span><br><span class="line">    res = cur.execute(sql)  <span class="comment">#运行这个sql 上面第一部分有写哇这个execute()</span></span><br><span class="line">    data = cur.fetchone()   <span class="comment">##这里的fetchone是得到版本号的和上面第一部分的不一样</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;得到版本号&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    <span class="comment">#都输出看看</span></span><br><span class="line">    <span class="comment">#pymysql的connect和Mysqldb的不太一样但差不多别搞混就行这个是需要加内容等号的啥的，</span></span><br><span class="line">    <span class="comment">#MySQldb则是除了除了字符集那个，好像其他的都可以不加，</span></span><br><span class="line">    <span class="comment">#然后它们俩模块都有部分命令是需要手打的，需要你自己记住</span></span><br></pre></td></tr></table></figure>
+
+<p>这些都在《python1+x中级》里的但是上面这段他们应该写少了一段代码。虽然这个文件也只是个模板，但是我还是比较在意的，模板肯定要是那种改改能跑的哇。</p>
+<h5 id="二部分-1·增"><a href="#二部分-1·增" class="headerlink" title="二部分-1·增"></a>二部分-1·增</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">&quot;insert into no1(uName,USex)\</span></span><br><span class="line"><span class="string">      values(&#x27;王坤哥&#x27;,&#x27;男&#x27;)&quot;</span></span><br><span class="line"><span class="comment">#增加王坤，男信息。uID它会自己补充的（不懂的去看那篇命令文章）。</span></span><br><span class="line"><span class="comment">#注意这上面的引号</span></span><br><span class="line"></span><br><span class="line">res = cur.execute(sql)</span><br><span class="line">Db.commit()  <span class="comment">#这段代码在增，删，改，查后面都要加，主要功能应该是提交数据，可以上网搜下搜：</span></span><br><span class="line">             <span class="comment">#python commit这句</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;插入数据：%s条&quot;</span> % res)</span><br></pre></td></tr></table></figure>
+
+<p>注意缩进！！！</p>
+<p>推荐你先多写几遍，背下这种命令，再多运行几遍写入多点数据</p>
+<p>给你一个任务：创建四条数据分别为两条王坤哥，男及两条王大雷，男</p>
+<p>运行完成，可以到Navicat里看看（没报红就是对）</p>
+<p>接下来的建议先把上面的这个’增‘的代码先注释掉,选择然后ctrl+&#x2F;。</p>
+<h5 id="二部分-2·删"><a href="#二部分-2·删" class="headerlink" title="二部分-2·删"></a>二部分-2·删</h5><p>在上面的’增‘后面加上这些，然后记得注释掉’增‘</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">&quot;delete from no1 where uName like &#x27;王坤哥&#x27;&quot;</span></span><br><span class="line"><span class="comment">#删除uName为王坤哥的所有</span></span><br><span class="line"></span><br><span class="line">res = cur.execute(sql)</span><br><span class="line">Db.commit()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;成功删除&quot;</span> + <span class="built_in">str</span>(res) + <span class="string">&quot;条&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意缩进！！！</p>
+<p>用完注释掉哇。</p>
+<h5 id="二部分-3·改"><a href="#二部分-3·改" class="headerlink" title="二部分-3·改"></a>二部分-3·改</h5><p>改你有的数据嗷</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">&quot;update no1 set uName=&#x27;王小美&#x27;,USex=&#x27;女&#x27;\</span></span><br><span class="line"><span class="string">          where uName=&#x27;王大雷&#x27;&quot;</span></span><br><span class="line">   res = cur.execute(sql)</span><br><span class="line">   Db.commit()</span><br><span class="line">   <span class="built_in">print</span>(<span class="string">&quot;成功修改&quot;</span> + <span class="built_in">str</span>(res) + <span class="string">&quot;条数据&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后用完一样记得注释！</p>
+<h5 id="二部分-4·查"><a href="#二部分-4·查" class="headerlink" title="二部分-4·查"></a>二部分-4·查</h5><p>如果你没有注释掉上面的MySQLdb的内容，就会看到它一直出数据吧。</p>
+<p>现在在用pymysql做一个和它差不多的看看区别</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">&quot;select uID,uName from no1&quot;</span> <span class="comment">#这里只输出uID和uName</span></span><br><span class="line">res = cur.execute(sql)</span><br><span class="line">data = cur.fetchall()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;数据查询:\n查询到&quot;</span> + <span class="built_in">str</span>(res) + <span class="string">&quot;条\n&quot;</span> + <span class="built_in">str</span>(data))</span><br><span class="line">cur.close()      <span class="comment">#别忘了关闭</span></span><br></pre></td></tr></table></figure>
+
+<p>运行一遍看到不一样了吧，和上面的MySQLdb的不一样吧，把上面那个不好看的也解除注释，</p>
+<p>三个对比下。</p>
+<p>第一个格式是</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/python/t.png"></p>
+<p>另一个格式是用python的for循环输出的</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/python/t2.png"></p>
+<p>最后一个则是</p>
+<p><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/python/t3.png"></p>
+<p>最后这个一样可以以使用for，in循环输出</p>
+<p>也可以改成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sql = <span class="string">&quot;select uID,uName,USex from no1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输出uID，uName，USex</span></span><br><span class="line"></span><br><span class="line">sql =<span class="string">&quot;select * from mo1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输出no1表中全部</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ChenMou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/14/%E4%BD%BF%E7%94%A8python%E6%9D%A5%E8%BF%9E%E6%8E%A5mysql/">http://example.com/2023/05/14/使用python来连接mysql/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">陈某得博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/xuejian.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/www.baidu.com" target="_blank"><img class="post-qr-code-img" src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao蓝.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/www.baidu.com" target="_blank"><img class="post-qr-code-img" src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao蓝.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/12/MySQL%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88%E5%B1%95%E7%A4%BA/" title="MySQL简单命令集合展示"><img class="cover" src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao4.jpg" onerror="onerror=null;src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MySQL简单命令集合展示</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/刻晴猫猫.png" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChenMou</div><div class="author-info__description">交流吹水</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ChenMouNuo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ChenMouNou" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:chen27552854@outbook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">本站图片多在Pixivel下载<br/>评论区修好啦！！！（喜上眉梢）<br/></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">下载模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pyCham"><span class="toc-number">1.1.</span> <span class="toc-text">pyCham</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS-code"><span class="toc-number">1.2.</span> <span class="toc-text">VS code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">学习文件格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-number">2.1.</span> <span class="toc-text">导入模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80mysql%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.2.</span> <span class="toc-text">打开mysql服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%A0%BC%E5%BC%8F%E8%BF%9B%E9%98%B6"><span class="toc-number">2.3.</span> <span class="toc-text">简单格式进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86MySQLdb"><span class="toc-number">2.3.1.</span> <span class="toc-text">第一部分MySQLdb</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86pymysql"><span class="toc-number">2.3.2.</span> <span class="toc-text">第二部分pymysql</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E9%83%A8%E5%88%86-1%C2%B7%E5%A2%9E"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">二部分-1·增</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E9%83%A8%E5%88%86-2%C2%B7%E5%88%A0"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">二部分-2·删</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E9%83%A8%E5%88%86-3%C2%B7%E6%94%B9"><span class="toc-number">2.3.2.3.</span> <span class="toc-text">二部分-3·改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E9%83%A8%E5%88%86-4%C2%B7%E6%9F%A5"><span class="toc-number">2.3.2.4.</span> <span class="toc-text">二部分-4·查</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/05/14/%E4%BD%BF%E7%94%A8python%E6%9D%A5%E8%BF%9E%E6%8E%A5mysql/" title="使用python连接mysql"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/xuejian.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="使用python连接mysql"/></a><div class="content"><a class="title" href="/2023/05/14/%E4%BD%BF%E7%94%A8python%E6%9D%A5%E8%BF%9E%E6%8E%A5mysql/" title="使用python连接mysql">使用python连接mysql</a><time datetime="2023-05-14T12:30:00.000Z" title="发表于 2023-05-14 20:30:00">2023-05-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/12/MySQL%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88%E5%B1%95%E7%A4%BA/" title="MySQL简单命令集合展示"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao4.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="MySQL简单命令集合展示"/></a><div class="content"><a class="title" href="/2023/05/12/MySQL%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E9%9B%86%E5%90%88%E5%B1%95%E7%A4%BA/" title="MySQL简单命令集合展示">MySQL简单命令集合展示</a><time datetime="2023-05-12T15:58:00.000Z" title="发表于 2023-05-12 23:58:00">2023-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/12/MySQL%E5%AE%89%E8%A3%85/" title="win-MySQL的安装"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao6.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="win-MySQL的安装"/></a><div class="content"><a class="title" href="/2023/05/12/MySQL%E5%AE%89%E8%A3%85/" title="win-MySQL的安装">win-MySQL的安装</a><time datetime="2023-05-12T13:00:00.000Z" title="发表于 2023-05-12 21:00:00">2023-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/28/Mongodb/" title="win-MongoDB的安装（母胎版）"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/maomao7.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="win-MongoDB的安装（母胎版）"/></a><div class="content"><a class="title" href="/2023/04/28/Mongodb/" title="win-MongoDB的安装（母胎版）">win-MongoDB的安装（母胎版）</a><time datetime="2023-04-28T13:00:00.000Z" title="发表于 2023-04-28 21:00:00">2023-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/06/%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB/" title="简单爬虫"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/小仓唯.jpg" onerror="this.onerror=null;this.src='https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/404l.jpg'" alt="简单爬虫"/></a><div class="content"><a class="title" href="/2023/03/06/%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB/" title="简单爬虫">简单爬虫</a><time datetime="2023-03-06T06:30:00.000Z" title="发表于 2023-03-06 14:30:00">2023-03-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By ChenMou</div><div class="footer_custom_text">People talking without speaking.<br/><a href="#">生活链接</a><a href="https://icp.gov.moe/?keyword=20232854" target="_blank"><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/萌ICP备 20232854.svg"></a><img src="https://cdn.staticaly.com/gh/ChenMouNou/hexo@main/img/chen-摸鱼中-00d7f4.svg"></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://hexo.twikoo.chenmou.xyz/',
+      region: 'ap-qingyuan',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://hexo.twikoo.chenmou.xyz/',
+      region: 'ap-qingyuan',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="1853327770" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-lrctype="1" data-preload="none" data-autoplay="true" muted></div><script id="canvas_nest" defer="defer" color="34,184,240" opacity="1.7" zIndex="-1" count="169" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="真,好,玩,真,好,玩,真,的,真,の,很好,玩" data-fontsize="18px" data-random="false" async="async"></script><script>window.$crisp = [];
+window.CRISP_WEBSITE_ID = "ec748dec-df83-439c-877b-74c35d80db9d";
+(function () {
+  d = document;
+  s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = 1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+$crisp.push(["safe", true])
+
+if (true) {
+  $crisp.push(["do", "chat:hide"])
+  $crisp.push(["on", "chat:closed", function() {
+    $crisp.push(["do", "chat:hide"])
+  }])
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      $crisp.push(["do", "chat:hide"])
+    }
+    function chatBtnShow () {
+      $crisp.push(["do", "chat:show"])
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/link/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
